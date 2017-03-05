@@ -1,23 +1,17 @@
 
 $(document).ready(function(){
+    //Generate new barcode on user input
     $("#userInput").on('input',newBarcode);
 
-
+    //Show or Hide barcode number
     $(".display-text").click(function(){
       $(".display-text").removeClass("btn-primary");
       $(this).addClass("btn-primary");
 
-      if($(this).val() == "true"){
-        $("#font-options").slideDown("fast");
-      }
-      else{
-        $("#font-options").slideUp("fast");
-      }
-
       newBarcode();
     });
 
-
+    //Generate rangeSliders
     $('input[type="range"]').rangeslider({
         polyfill: false,
         rangeClass: 'rangeslider',
@@ -27,32 +21,39 @@ $(document).ready(function(){
         onSlideEnd: newBarcode
     });
 
+    //Print in A4 format
     $("#printA4").click(function(){
-      $(".grid.printable").print({
-        title: ' ',
-      });
+      $(".grid.printable").print();
     });
 
     newBarcode();
 });
 
+var LOG_FLAG=true;
+
+var consoleLog = function(){
+    if(LOG_FLAG){
+      console.log(arguments);
+    }
+}
+
 var newBarcode = function() {
-    //Convert to boolean
 
     var nbHeight=parseInt($("#bar-height").val());
     var nbWidth=parseInt($("#bar-width").val());
     var margin=parseInt($("#bar-margin").val());
 
-    
-    //generateA4format(".grid.preview",nbHeight,nbWidth,margin);
+    //Generate the preview and the printable A4 page
+    generateA4format(".grid.preview",nbHeight,nbWidth,margin);
     generateA4format(".grid.printable",nbHeight,nbWidth,margin);
-    
 
+    //Generate the big preview barcode
     generateBarcorde("#bigbarcode");
     
     //Align center after rendering
     $(".grid-col").css("align-items","center");
 
+    //Update diplay
     $("#bar-width-display").text($("#bar-width").val());
     $("#bar-height-display").text($("#bar-height").val());
     $("#bar-margin-display").text($("#bar-margin").val());
@@ -67,19 +68,20 @@ generateA4format=function(selector,nbHeight,nbWidth,margin){
   for(var i = 0; i < nbWidth; i++){
     var gridCol=$("<div class='grid-col'></div>");
     for(var j = 0; j< nbHeight; j++){
-      gridCol.append("<div class='grid-row'></div>");
+      var gridRow=$("<div class='grid-row'></div>");
+      gridCol.append(gridRow);
     }
     $(selector).append(gridCol);
   }
   
-  var gridRowWidth=$(".grid-row").width();
-  var gridColHeight=$(".grid-col").height();
-  console.log("gridCol",gridColHeight);
-  console.log(gridRowWidth);
-  $(".grid-row").html("<svg class='barcode'>");
-  console.log($(".grid-row").width());
+  var gridRowWidth=$(selector+" .grid-row").width();
+  var gridColHeight=$(selector+" .grid-col").height();
+  consoleLog("gridCol",gridColHeight);
+  consoleLog(gridRowWidth);
+  $(selector+" .grid-row").html("<svg class='barcode'>");
+  consoleLog($(selector+" .grid-row").width());
 
-  generateBarcorde(".barcode");
+  generateBarcorde(selector+" .barcode");
 
 
   var gridRow={
@@ -93,17 +95,18 @@ generateA4format=function(selector,nbHeight,nbWidth,margin){
   };
 
   //Adapt barcode height & width
-  $(".barcode").width(gridRow.width);
-  $(".barcode").height(gridRow.height);
-  if($(".barcode").height()*nbHeight>gridColHeight){
-    console.log("height controlling");
-    $(".barcode").height(gridCol.height);
-    $(".barcode").width(gridCol.width);
+  $(selector+" .barcode").width(gridRow.width);
+  $(selector+" .barcode").height(gridRow.height);
+  if($(selector+" .barcode").height()*nbHeight>gridColHeight){
+    consoleLog("Height is controlling");
+    $(selector+" .barcode").height(gridCol.height);
+    $(selector+" .barcode").width(gridCol.width);
   }
-  console.log("barcodeH",$(".barcode").height()*nbHeight);
+  consoleLog("barcodeH",$(selector+" .barcode").height()*nbHeight);
 }
 
 
+/*Generate bar code on a given selector*/
 var generateBarcorde=function(selector){
   
   $(selector).JsBarcode(
@@ -114,11 +117,11 @@ var generateBarcorde=function(selector){
         "valid":
           function(valid){
             if(valid){
-              $("#barcode").show();
+              $("#bigbarcode").show();
               $("#invalid").hide();
             }
             else{
-              $("#barcode").hide();
+              $("#bigbarcode").hide();
               $("#invalid").show();
             }
           }

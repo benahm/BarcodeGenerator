@@ -66,7 +66,6 @@ html{
     display:inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
     line-height: 90%;
 }
 
@@ -99,11 +98,11 @@ html{
 }
 
 .barcode-container{
-  height:200px;
+  height:180px;
   line-height: 200px;
   text-align: center;
   vertical-align: middle;
-  margin-top: 50;
+  margin-top: 20;
   margin-left: 25px;
   margin-right: 25px;
 }
@@ -168,6 +167,7 @@ html{
 }
 
 .grid.preview {
+  margin-top: 10px;
   margin-bottom: 30px;
   width: 210px;
   height: 297px;
@@ -184,7 +184,6 @@ html{
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  /*align-items: center;*/
   overflow: hidden;
 }
 
@@ -195,4 +194,8 @@ html{
   @page { margin: 0; }
   body { margin: 0; }
 
+  .grid {
+    border-style: none;
+    border-width: 0px;
+  }
 }
