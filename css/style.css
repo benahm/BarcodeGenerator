@@ -149,22 +149,33 @@ html{
   margin-top: 5px;
 }
 
+.controls{
+  margin-bottom: 20px;
+}
+
 .formatA4{
   display: flex;
   justify-content: center;
 }
 
 .grid {
-  border-style: solid;
-  border-width: 2px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 210px;
-  height: 297px;
+  border-style: dotted;
+  border-width: 1px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
+}
+
+.grid.preview {
+  margin-bottom: 30px;
+  width: 210px;
+  height: 297px;
+}
+
+.grid.printable {
+  width: 21cm;
+  height: 29.7cm;
 }
 
 .grid-col {
@@ -180,3 +191,8 @@ html{
 .grid-row {
 }
 
+@media print {
+  @page { margin: 0; }
+  body { margin: 0; }
+
+}
