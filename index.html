@@ -25,8 +25,8 @@
         <div class="row text-center">
           <div class="center-block">
             <div id="title">
-              <h1>Barcode EAN13 Generator</h1>
-              Generate EAN13 barcodes to print in A4 format
+              <h1>Générateur de code-barres</h1>
+              Générez code-barres du type EAN13 dans des pages au format A4 imprimables
             </div>
           </div>
         </div>
@@ -40,12 +40,12 @@
           </div>
         </div>
 
-        <span id="invalid" style="display: none;">Not valid data for this barcode type!</span>
+        <span id="invalid" style="display: none;">Code-barre non valide!</span>
       </div>
       <div class="container">
         <div class="row text-center">
           <div class="center-block">
-              Preview of the A4 Format
+              Petit aperçu de la page au format A4
           </div>
         </div>
       </div>
@@ -60,14 +60,14 @@
               <span class="input-group-addon"><i class="fa fa-barcode fa-fw"></i></span>
               <input class="form-control" id="userInput" type="text" value="123456789992" placeholder="Barcode" autofocus="">
               <span class="input-group-btn">
-                  <button id="printA4" class="btn btn-default" type="button">Print A4</button>
+                  <button id="printA4" class="btn btn-default" type="button">Imprimer A4</button>
               </span>
             </div>
           </div>
         </div>
         <!-- Bar width -->
         <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Number Width</p></div>
+          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Nombre de colonnes</p></div>
           <div class="col-md-7 col-xs-11 slider-container">
             <input id="bar-width" type="range" min="1" max="8" step="1" value="3">
           </div>
@@ -75,7 +75,7 @@
         </div>
         <!-- Height -->
         <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Number Height</p></div>
+          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Nombre de lignes</p></div>
           <div class="col-md-7 col-xs-11 slider-container">
             <input id="bar-height" type="range" min="1" max="16" step="1" value="7">
           </div>
@@ -83,7 +83,7 @@
         </div>
         <!-- Margin -->
         <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Margin</p></div>
+          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Marge</p></div>
           <div class="col-md-7 col-xs-11 slider-container">
             <input id="bar-margin" type="range" min="0" max="15" step="1" value="4">
           </div>
@@ -91,11 +91,11 @@
         </div>
         <!-- Show text -->
         <div class="row checkbox-options">
-          <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Show text</p></div>
+          <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Afficher le code</p></div>
           <div class="col-md-7 col-xs-12 center-text">
             <div class="btn-group btn-group-md" role="toolbar">
-              <button type="button" class="btn btn-default btn-primary display-text" value="true">Show</button>
-              <button type="button" class="btn btn-default display-text" value="false">Hide</button>
+              <button type="button" class="btn btn-default btn-primary display-text" value="true">Afficher</button>
+              <button type="button" class="btn btn-default display-text" value="false">Cacher</button>
             </div>
           </div>
           <div class="col-md-1 col-xs-0"></div>

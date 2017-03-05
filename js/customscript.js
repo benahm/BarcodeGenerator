@@ -102,7 +102,6 @@ generateA4format=function(selector,nbHeight,nbWidth,margin){
     $(selector+" .barcode").height(gridCol.height);
     $(selector+" .barcode").width(gridCol.width);
   }
-  consoleLog("barcodeH",$(selector+" .barcode").height()*nbHeight);
 }
 
 
