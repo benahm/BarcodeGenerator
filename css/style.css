@@ -1,5 +1,5 @@
 body{
-    background:#ddd;
+    background: #777;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ html{
 }
 
 #main{
-    background:#fff;
+    background: #fff;
     margin: 0 auto;
     -moz-border-radius: 5px;
     border-radius: 5px;
