@@ -23,6 +23,7 @@ $(document).ready(function(){
 
     //Print in A4 format
     $("#printA4").click(function(){
+      $("title").html("GenerateurCodeBarreEAN13_"+$("#userInput").val());
       $(".grid.printable").print();
     });
 
