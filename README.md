@@ -1,1 +1,1 @@
-# Générateur Code-barre EAN13
+# Générateur de code-barres EAN13
